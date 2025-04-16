@@ -1,0 +1,285 @@
+/* Глобальні стилі */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --success-color: #4cc9f0;
+  --danger-color: #f72585;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+/* Контейнер */
+.container {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+/* Аутентифікація */
+#auth-container {
+  padding: 40px;
+  text-align: center;
+}
+
+#auth-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#login-form input {
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+#login-form input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+#login-form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#login-form button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+#login-error {
+  margin-top: 15px;
+}
+
+/* Файловий менеджер */
+#upload-container {
+  padding: 30px;
+}
+
+#upload-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+#upload-container h2 {
+  color: var(--secondary-color);
+  margin: 20px 0 15px;
+  font-size: 1.5rem;
+}
+
+#file-input {
+  display: none;
+}
+
+.upload-area {
+  border: 2px dashed #adb5bd;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.upload-area:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(72, 149, 239, 0.05);
+}
+
+.upload-area p {
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+#upload-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: block;
+  margin: 0 auto 20px;
+}
+
+#upload-button:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Список файлів */
+#fileList {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  border-left: 4px solid var(--accent-color);
+}
+
+.file-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filename {
+  font-weight: 500;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 15px;
+}
+
+.file-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.file-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.view-btn {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #3aa8d8;
+}
+
+.download-btn {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.download-btn:hover {
+  background-color: #3a7bc8;
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e5177e;
+}
+
+/* Кнопка виходу */
+.logout-btn {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: block;
+  margin: 30px auto 0;
+}
+
+.logout-btn:hover {
+  background-color: #e5177e;
+  transform: translateY(-2px);
+}
+
+/* Адаптація для мобільних пристроїв */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  #auth-container, #upload-container {
+    padding: 25px;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .file-actions {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* Анімації */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#upload-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.file-item {
+  animation: fadeIn 0.3s ease-out;
+}
