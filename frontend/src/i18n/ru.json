@@ -1,0 +1,131 @@
+{
+  "language_selector": {
+    "choose_language": "Выберите язык:"
+  },
+  "login": {
+    "header": {
+      "brand": "SkySync"
+    },
+    "email_step": {
+      "title_line1": "Войти или",
+      "title_line2": "Зарегистрироваться",
+      "continue_with_apple": "Продолжить через Apple",
+      "or": "или",
+      "email_label": "Адрес электронной почты",
+      "continue_button": "Продолжить",
+      "checking": "Проверка..."
+    },
+    "password_step": {
+      "back": "Назад",
+      "welcome_back": "С возвращением",
+      "sign_in_with": "Войти через {{email}}",
+      "password_label": "Пароль",
+      "forgot_password": "Забыли пароль?",
+      "remember_me": "Запомнить меня",
+      "login_button": "Войти",
+      "logging_in": "Вход..."
+    },
+    "register_step": {
+      "back": "Назад",
+      "register_free": "Зарегистрироваться бесплатно",
+      "email_label": "Адрес электронной почты",
+      "first_name_label": "Имя",
+      "last_name_label": "Фамилия",
+      "password_label": "Пароль",
+      "password_instruction": "Создайте пароль, который соответствует всем требованиям ниже",
+      "password_min_length": "Не менее 8 символов",
+      "password_has_letter": "Содержит как минимум 1 букву",
+      "password_has_number": "Содержит как минимум 1 цифру",
+      "password_has_special": "Содержит как минимум 1 специальный символ",
+      "marketing_consent": "Я хочу получать маркетинговые материалы от SkySync по электронной почте",
+      "terms_agreement": "Выбирая «Согласиться и зарегистрироваться», я соглашаюсь с Условиями SkySync и условиями Соглашения об обслуживании. Узнайте, как мы используем и защищаем ваши данные, ознакомившись с нашей Политикой конфиденциальности.",
+      "register_button": "Согласиться и зарегистрироваться",
+      "registering": "Регистрация..."
+    },
+    "errors": {
+      "empty_email": "Пожалуйста, введите адрес электронной почты",
+      "invalid_email": "Пожалуйста, введите действительный адрес электронной почты, например, example@gmail.com",
+      "email_check_error": "Ошибка при проверке электронной почты. Проверьте подключение к сети или попробуйте снова.",
+      "empty_password": "Пожалуйста, введите пароль",
+      "wrong_password": "Неверный пароль. Попробуйте снова.",
+      "server_error": "Ошибка сервера. Попробуйте снова.",
+      "empty_names": "Пожалуйста, введите имя и фамилию",
+      "invalid_password": "Пароль должен соответствовать всем требованиям ниже.",
+      "email_registered": "Этот адрес электронной почты уже зарегистрирован. Попробуйте другой или войдите.",
+      "register_error": "Ошибка при регистрации. Попробуйте снова.",
+      "google_login_error": "Ошибка при входе через Google. Попробуйте снова."
+    },
+    "footer": {
+      "dropbox": {
+        "title": "SkySync",
+        "desktop_app": "Приложение для ПК",
+        "mobile_app": "Мобильное приложение",
+        "integrations": "Интеграции",
+        "features": "Функции",
+        "solutions": "Решения",
+        "security": "Безопасность",
+        "early_access": "Ранний доступ",
+        "templates": "Шаблоны",
+        "free_tools": "Бесплатные инструменты"
+      },
+      "products": {
+        "title": "Продукты",
+        "plus": "Plus",
+        "professional": "Профессиональный",
+        "business": "Бизнес",
+        "enterprise": "Предприятие",
+        "dash": "Dash",
+        "reclaim": "Reclaim.ai",
+        "sign": "SkySync Sign",
+        "docsend": "DocSend",
+        "plans": "Планы",
+        "updates": "Обновления продуктов"
+      },
+      "features": {
+        "title": "Функции",
+        "send_large_files": "Отправка больших файлов",
+        "send_large_videos": "Отправка больших видео",
+        "photo_storage": "Облачное хранилище для фотографий",
+        "secure_sharing": "Безопасный обмен файлами",
+        "password_manager": "Менеджер паролей",
+        "cloud_backup": "Облачное резервное копирование",
+        "pdf_editing": "Редактирование PDF",
+        "e_signatures": "Электронные подписи",
+        "pdf_conversion": "Конвертация в PDF"
+      },
+      "support": {
+        "title": "Поддержка",
+        "help_center": "Центр помощи",
+        "contact_us": "Связаться с нами",
+        "cancel_contract": "Расторгнуть контракт",
+        "privacy_terms": "Конфиденциальность и условия",
+        "cookie_policy": "Политика использования cookies",
+        "cookie_ccpa": "Настройки cookies и CCPA",
+        "ai_principles": "Принципы ИИ",
+        "sitemap": "Карта сайта",
+        "learning_resources": "Учебные ресурсы"
+      },
+      "resources": {
+        "title": "Ресурсы",
+        "blog": "Блог",
+        "customer_stories": "Истории клиентов",
+        "resource_library": "Библиотека ресурсов",
+        "developers": "Разработчикам",
+        "community_forums": "Форумы сообщества",
+        "referrals": "Рефералы",
+        "reseller_partners": "Партнеры-реселлеры",
+        "integration_partners": "Партнеры по интеграции",
+        "find_partner": "Найти партнера"
+      },
+      "company": {
+        "title": "Компания",
+        "about_us": "О нас",
+        "legal_info": "Юридическая информация",
+        "careers": "Карьера",
+        "investor_relations": "Отношения с инвесторами",
+        "our_impact": "Наше влияние"
+      },
+      "language": "Русский"
+    }
+  }
+}

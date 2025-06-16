@@ -1,0 +1,131 @@
+{
+  "language_selector": {
+    "choose_language": "[Translate: Choose a language:]"
+  },
+  "login": {
+    "header": {
+      "brand": "SkySync"
+    },
+    "email_step": {
+      "title_line1": "[Translate: Sign in or]",
+      "title_line2": "[Translate: Register]",
+      "continue_with_apple": "[Translate: Continue with Apple]",
+      "or": "[Translate: or]",
+      "email_label": "[Translate: Email address]",
+      "continue_button": "[Translate: Continue]",
+      "checking": "[Translate: Checking...]"
+    },
+    "password_step": {
+      "back": "[Translate: Back]",
+      "welcome_back": "[Translate: Welcome back]",
+      "sign_in_with": "[Translate: Sign in with {{email}}]",
+      "password_label": "[Translate: Password]",
+      "forgot_password": "[Translate: Forgot password?]",
+      "remember_me": "[Translate: Remember me]",
+      "login_button": "[Translate: Sign in]",
+      "logging_in": "[Translate: Logging in...]"
+    },
+    "register_step": {
+      "back": "[Translate: Back]",
+      "register_free": "[Translate: Register for free]",
+      "email_label": "[Translate: Email address]",
+      "first_name_label": "[Translate: First name]",
+      "last_name_label": "[Translate: Last name]",
+      "password_label": "[Translate: Password]",
+      "password_instruction": "[Translate: Create a password that meets all the requirements below]",
+      "password_min_length": "[Translate: At least 8 characters]",
+      "password_has_letter": "[Translate: Contains at least 1 letter]",
+      "password_has_number": "[Translate: Contains at least 1 number]",
+      "password_has_special": "[Translate: Contains at least 1 special character]",
+      "marketing_consent": "[Translate: I wish to receive marketing materials from SkySync by email]",
+      "terms_agreement": "[Translate: By selecting “Agree and register”, I agree to SkySync’s Terms and the Service Agreement terms. Learn how we use and protect your data by reviewing our Privacy Policy.]",
+      "register_button": "[Translate: Agree and register]",
+      "registering": "[Translate: Registering...]"
+    },
+    "errors": {
+      "empty_email": "[Translate: Please enter an email]",
+      "invalid_email": "[Translate: Please enter a valid email, e.g., example@gmail.com]",
+      "email_check_error": "[Translate: Error checking email. Check your network connection or try again.]",
+      "empty_password": "[Translate: Please enter a password]",
+      "wrong_password": "[Translate: Incorrect password. Try again.]",
+      "server_error": "[Translate: Server error. Try again.]",
+      "empty_names": "[Translate: Please enter First name and Last name]",
+      "invalid_password": "[Translate: Password must meet all requirements below.]",
+      "email_registered": "[Translate: This email is already registered. Try another or sign in.]",
+      "register_error": "[Translate: Error during registration. Try again.]",
+      "google_login_error": "[Translate: Error signing in with Google. Try again.]"
+    },
+    "footer": {
+      "dropbox": {
+        "title": "[Translate: SkySync]",
+        "desktop_app": "[Translate: Desktop app]",
+        "mobile_app": "[Translate: Mobile app]",
+        "integrations": "[Translate: Integrations]",
+        "features": "[Translate: Features]",
+        "solutions": "[Translate: Solutions]",
+        "security": "[Translate: Security]",
+        "early_access": "[Translate: Early access]",
+        "templates": "[Translate: Templates]",
+        "free_tools": "[Translate: Free tools]"
+      },
+      "products": {
+        "title": "[Translate: Products]",
+        "plus": "[Translate: Plus]",
+        "professional": "[Translate: Professional]",
+        "business": "[Translate: Business]",
+        "enterprise": "[Translate: Enterprise]",
+        "dash": "[Translate: Dash]",
+        "reclaim": "[Translate: Reclaim.ai]",
+        "sign": "[Translate: SkySync Sign]",
+        "docsend": "[Translate: DocSend]",
+        "plans": "[Translate: Plans]",
+        "updates": "[Translate: Product updates]"
+      },
+      "features": {
+        "title": "[Translate: Features]",
+        "send_large_files": "[Translate: Send large files]",
+        "send_large_videos": "[Translate: Send large videos]",
+        "photo_storage": "[Translate: Cloud storage for photos]",
+        "secure_sharing": "[Translate: Secure file sharing]",
+        "password_manager": "[Translate: Password manager]",
+        "cloud_backup": "[Translate: Cloud backup]",
+        "pdf_editing": "[Translate: PDF editing]",
+        "e_signatures": "[Translate: E-signatures]",
+        "pdf_conversion": "[Translate: Convert to PDF]"
+      },
+      "support": {
+        "title": "[Translate: Support]",
+        "help_center": "[Translate: Help center]",
+        "contact_us": "[Translate: Contact us]",
+        "cancel_contract": "[Translate: Cancel contract]",
+        "privacy_terms": "[Translate: Privacy and terms]",
+        "cookie_policy": "[Translate: Cookie policy]",
+        "cookie_ccpa": "[Translate: Cookie and CCPA settings]",
+        "ai_principles": "[Translate: AI principles]",
+        "sitemap": "[Translate: Sitemap]",
+        "learning_resources": "[Translate: Learning resources]"
+      },
+      "resources": {
+        "title": "[Translate: Resources]",
+        "blog": "[Translate: Blog]",
+        "customer_stories": "[Translate: Customer stories]",
+        "resource_library": "[Translate: Resource library]",
+        "developers": "[Translate: Developers]",
+        "community_forums": "[Translate: Community forums]",
+        "referrals": "[Translate: Referrals]",
+        "reseller_partners": "[Translate: Reseller partners]",
+        "integration_partners": "[Translate: Integration partners]",
+        "find_partner": "[Translate: Find a partner]"
+      },
+      "company": {
+        "title": "[Translate: Company]",
+        "about_us": "[Translate: About us]",
+        "legal_info": "[Translate: Legal information]",
+        "careers": "[Translate: Careers]",
+        "investor_relations": "[Translate: Investor relations]",
+        "our_impact": "[Translate: Our impact]"
+      },
+      "language": "[Translate: Language Name (e.g., Bahasa Indonesia)]"
+    }
+  }
+}

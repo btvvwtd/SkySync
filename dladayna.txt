@@ -1,0 +1,1019 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login, register, googleLogin } from '../api/api';
+
+const Login: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
+  const [step, setStep] = useState<'email' | 'password' | 'register'>('email');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  // ЗМІНИ ПОЧАТОК
+  useEffect(() => {
+    if (step !== 'email') return;
+
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.onload = () => {
+      if (window.google) {
+        window.google.accounts.id.initialize({
+          client_id: '567391164162-4md16qmddhllj6hpe4e818edsnug4fmh.apps.googleusercontent.com',
+          callback: handleGoogleSignIn,
+        });
+        window.google.accounts.id.renderButton(
+          document.getElementById('googleSignInDiv'),
+          { theme: 'outline', size: 'large', type: 'standard', text: 'signin_with', shape: 'rectangular' }
+        );
+      }
+    };
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, [step]);
+  // ЗМІНИ КІНЕЦЬ
+
+  const handleGoogleSignIn = async (response: any) => {
+    setIsLoading(true);
+    try {
+      const res = await googleLogin(response.credential);
+      const { access_token } = res.data;
+      if (rememberMe) {
+        localStorage.setItem('token', access_token);
+        localStorage.setItem('userEmail', email);
+      } else {
+        sessionStorage.setItem('token', access_token);
+        sessionStorage.setItem('userEmail', email);
+      }
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Помилка при вході через Google. Спробуйте ще раз.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleLogin = (provider: string) => {
+    alert(`Авторизація через ${provider} ще не реалізована`);
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!email) {
+      setError('Будь ласка, введіть email');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Будь ласка, введіть коректний email');
+      return;
+    }
+
+    setStep('password');
+  };
+
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!password) {
+      setError('Будь ласка, введіть пароль');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await login(email, password);
+      const { access_token } = response.data;
+
+      if (rememberMe) {
+        localStorage.setItem('token', access_token);
+        localStorage.setItem('userEmail', email);
+      } else {
+        sessionStorage.setItem('token', access_token);
+        sessionStorage.setItem('userEmail', email);
+      }
+
+      navigate('/dashboard');
+    } catch (err: any) {
+      if (err.response?.status === 401) {
+        setStep('register');
+      } else if (err.response?.status === 400) {
+        setStep('register');
+      } else {
+        setError('Помилка сервера. Спробуйте ще раз.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!email) {
+      setError('Будь ласка, введіть email');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Будь ласка, введіть коректний email');
+      return;
+    }
+    if (!firstName || !lastName) {
+      setError("Будь ласка, введіть Ім'я та прізвище");
+      return;
+    }
+    if (!isPasswordValid(password)) {
+      setError('Пароль має відповідати всім вимогам нижче.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      await register(email, password, firstName, lastName);
+      const response = await login(email, password);
+      const { access_token } = response.data;
+
+      if (rememberMe) {
+        localStorage.setItem('token', access_token);
+        localStorage.setItem('userEmail', email);
+      } else {
+        sessionStorage.setItem('token', access_token);
+        sessionStorage.setItem('userEmail', email);
+      }
+
+      navigate('/dashboard');
+    } catch (err: any) {
+      if (err.response?.status === 400) {
+        setError('Цей email уже зареєстрований. Спробуйте інший або увійдіть.');
+      } else {
+        setError('Помилка при реєстрації. Спробуйте ще раз.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const isPasswordValid = (password: string) => {
+    const minLength = 8;
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    return password.length >= minLength && hasLetter && hasNumber && hasSpecial;
+  };
+
+  const getPasswordRequirement = (condition: boolean) => {
+    return condition ? (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 15.17L6.83 12L5.41 13.41L10 18L19 9L17.59 7.59L10 15.17Z" fill="#28a745"/>
+      </svg>
+    ) : (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM4 12C4 7.58 7.58 4 12 4C14.36 4 16.53 5.03 18.07 6.66L6.66 18.07C5.03 16.53 4 14.36 4 12ZM12 20C9.64 20 7.47 18.97 5.93 17.34L17.34 5.93C18.97 7.47 20 9.64 20 12C20 16.42 16.42 20 12 20Z" fill="#dc3545"/>
+      </svg>
+    );
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '14px',
+    fontSize: '16px',
+    fontWeight: 500,
+    borderRadius: '12px',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+  };
+
+  return (
+    <div style={{
+      fontFamily: 'Arial, sans-serif',
+      color: 'black',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      margin: 0,
+      padding: 0,
+      position: 'relative',
+    }}>
+      <header style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        padding: '16px 40px',
+        fontSize: '24px',
+        fontWeight: 'bold',
+        color: 'black',
+        borderBottom: '1px solid #e0e0e0',
+        backgroundColor: 'white',
+        zIndex: 100,
+        display: 'flex',
+        alignItems: 'center',
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          flex: 1,
+        }}>
+          <img
+            src="./public/logo_icons/skysync.svg"
+            alt="SkySync Logo"
+            style={{
+              height: '30px',
+              width: '30px'
+            }}
+          />
+          <span>SkySync</span>
+        </div>
+
+        <div style={{ marginLeft: 'auto' }}>
+          <img
+            src="./public/logo_icons/internet.svg"
+            alt="Internet Icon"
+            style={{
+              height: '18px',
+              width: '18px',
+              cursor: 'pointer'
+            }}
+          />
+        </div>
+      </header>
+
+      <div style={{
+        paddingTop: '70px',
+        flex: '1',
+        zIndex: 0,
+      }}>
+        <main style={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '32px 0',
+          backgroundColor: 'white',
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '20px',
+            width: '320px',
+          }}>
+            {step === 'email' ? (
+              <>
+                <div style={{ textAlign: 'center', lineHeight: 1.2 }}>
+                  <p style={{ margin: 0 , fontSize: '20px' }}>Увійти або</p>
+                  <p style={{ margin: 0, fontSize: '20px' }}>Зареєструватись</p>
+                </div>
+
+                {/* ЗМІНИ ПОЧАТОК */}
+                {step === 'email' && (
+                  <>
+                    <div id="googleSignInDiv" style={{ marginBottom: '10px', width: '100%' }}></div>
+
+                    <button
+                      onClick={() => handleLogin('Apple')}
+                      style={{
+                        ...buttonStyle,
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        border: '1px solid #ccc',
+                        borderRadius: '0',
+                      }}
+                    >
+                      <img
+                        src="./public/logo_icons/apple-logo.svg"
+                        alt="Apple"
+                        style={{ height: '20px', width: '20px' }}
+                      />
+                      Продовжити за допомогою Apple
+                    </button>
+                  </>
+                )}
+                {/* ЗМІНИ КІНЕЦЬ */}
+
+                <div style={{ width: '100%', textAlign: 'center', borderBottom: '1px solid #ccc', lineHeight: '0.1em', margin: '20px 0' }}>
+                  <span style={{ background: 'white', padding: '0 10px', color: '#000', fontWeight: 500 }}>або</span>
+                </div>
+
+                <form onSubmit={handleEmailSubmit} style={{ width: '100%' }}>
+  <label htmlFor="email" style={{
+    display: 'block',
+    marginBottom: '6px',
+    fontWeight: 400,
+    fontSize: '12px',
+    color: '#666',
+  }}>
+    Адреса електронної пошти
+  </label>
+  <input
+    type="email"
+    id="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+    style={{
+      width: '100%',
+      padding: '14px',
+      fontSize: '14px',
+      borderRadius: '0',
+      border: error ? '1px solid red' : '1px solid #ccc',
+      marginBottom: '14px',
+      textAlign: 'left',
+      color: '#000',
+      boxSizing: 'border-box',
+      fontWeight: 400,
+    }}
+  />
+  {error && <div style={{ color: 'red', marginBottom: '10px', fontSize: '14px' }}>{error}</div>}
+  <button
+    type="submit"
+    style={{
+      ...buttonStyle,
+      backgroundColor: '#007BFF',
+      color: '#fff',
+    }}
+  >
+    Продовжити
+  </button>
+</form>
+
+              </>
+            ) : step === 'password' ? (
+              <>
+                <button
+                  onClick={() => setStep('email')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    alignSelf: 'flex-start',
+                    padding: '8px 0',
+                    color: '#333',
+                    fontWeight: 500,
+                  }}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 18L9 12L15 6"
+                      stroke="#000000"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span style={{ textDecoration: 'underline', textDecorationColor: '#000' }}>Назад</span>
+                </button>
+
+                <div style={{ textAlign: 'center', lineHeight: 1.2, width: '100%' }}>
+                  <p style={{ margin: 0, textAlign: 'center', fontSize: '25px' }}>З поверненням</p>
+                  <p style={{
+                    margin: '8px 0 24px',
+                    textAlign: 'center',
+                    fontSize: '16px',
+                    color: '#333',
+                    lineHeight: '60px',
+                    fontWeight: '400'
+                  }}>
+                    Увійти через {email}
+                  </p>
+                </div>
+
+                <form onSubmit={handlePasswordSubmit} style={{ width: '100%' }}>
+                  <label htmlFor="password" style={{
+                    display: 'block',
+                    marginBottom: '5px',
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    marginTop: '-30px',
+                    color: '#666',
+                  }}>
+                    Пароль
+                  </label>
+                  <div style={{ position: 'relative', width: '100%' }}>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      id="password"
+                      placeholder=""
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      style={{
+                        width: '100%',
+                        padding: '8px 12px',
+                        fontSize: '16px',
+                        borderRadius: '0',
+                        border: error ? '1px solid red' : '1px solid #ccc',
+                        marginBottom: '14px',
+                        textAlign: 'left',
+                        color: '#000',
+                        boxSizing: 'border-box',
+                        fontWeight: 400,
+                        height: '40px',
+                        outline: 'none',
+                        transition: 'border-color 0.2s ease-in-out',
+                      }}
+                      onFocus={e => (e.currentTarget.style.borderColor = '#007BFF')}
+                      onBlur={e => (e.currentTarget.style.borderColor = error ? 'red' : '#ccc')}
+                    />
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{
+                        position: 'absolute',
+                        right: '10px',
+                        top: '40%',
+                        transform: 'translateY(-50%)',
+                        cursor: 'pointer',
+                        color: '#666',
+                      }}
+                    >
+                      <img
+                        src={showPassword ? './public/logo_icons/view.svg' : './public/logo_icons/hide.svg'}
+                        alt={showPassword ? 'Hide password' : 'Show password'}
+                        style={{ width: '20px', height: '20px' }}
+                      />
+                    </span>
+                  </div>
+
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '12px',
+                    marginBottom: '24px',
+                  }}>
+                    <a href="#" style={{
+                      minHeight: '25px',
+                      color: '#007BFF',
+                      textDecoration: 'none',
+                      fontSize: '11px',
+                    }}>
+                      Забули пароль?
+                    </a>
+
+                    <label
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        cursor: 'pointer',
+                        fontSize: '14px',
+                        userSelect: 'none',
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                        style={{ display: 'none' }}
+                        id="rememberMeCheckbox"
+                      />
+
+
+
+
+
+
+
+
+
+                      <span
+                        style={{
+                          width: '18px',
+                          height: '18px',
+                          border: '2px solid #000',
+                          display: 'inline-block',
+                          position: 'relative',
+                          backgroundColor: rememberMe ? '#000' : 'transparent',
+                          transition: 'background-color 0.2s ease',
+                          borderRadius: '0',
+                          boxSizing: 'border-box',
+                        }}
+                      >
+                        {rememberMe && (
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            style={{
+                              position: 'absolute',
+                              top: '2px',
+                              left: '4px',
+                              width: '12px',
+                              height: '12px',
+                            }}
+                          >
+                            <polyline points="4 12 10 18 20 6" />
+                          </svg>
+                        )}
+                      </span>
+                      <span onClick={() => setRememberMe(!rememberMe)}>Запам'ятати мене</span>
+                    </label>
+                  </div>
+
+                  {error && <div style={{ color: 'red', marginBottom: '10px', fontSize: '14px' }}>{error}</div>}
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    style={{
+                      ...buttonStyle,
+                      backgroundColor: isLoading ? '#ccc' : '#007BFF',
+                      color: '#fff',
+                      marginBottom: '60px',
+                      fontSize: '16px'
+                    }}
+                  >
+                    {isLoading ? 'Вхід...' : 'Увійти'}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setStep('email')}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    alignSelf: 'flex-start',
+                    padding: '8px 0',
+                    color: '#333',
+                    fontWeight: 500,
+                  }}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 18L9 12L15 6"
+                      stroke="#000000"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span style={{ textDecoration: 'underline', textDecorationColor: '#000' }}>Назад</span>
+                </button>
+
+                <div style={{ textAlign: 'center', lineHeight: '1.2', width: '100%' }}>
+                  <p style={{ margin: 0, textAlign: 'center', fontSize: '25px' }}>Зареєструватися безкоштовно</p>
+                </div>
+
+                <form onSubmit={handleRegisterSubmit} style={{ width: '100%' }}>
+                  <label htmlFor="email" style={{
+                    display: 'block',
+                    marginBottom: '5px',
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    color: '#666',
+                  }}>
+                    Адреса електронної пошти
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder=""
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '8px 12px',
+                      fontSize: '16px',
+                      borderRadius: '0',
+                      border: error ? '1px solid red' : '1px solid #ccc',
+                      marginBottom: '14px',
+                      textAlign: 'left',
+                      color: '#000',
+                      boxSizing: 'border-box',
+                      fontWeight: '400',
+                      height: '40px',
+                      outline: 'none',
+                      transition: 'border-color 0.2s ease-in-out',
+                    }}
+                    onFocus={e => (e.currentTarget.style.borderColor = '#007BFF')}
+                    onBlur={e => (e.currentTarget.style.borderColor = error ? 'red' : '#ccc')}
+                  />
+
+                  <div style={{ display: 'flex', gap: '10px', marginBottom: '14px' }}>
+                    <div style={{ flex: 1 }}>
+                      <label htmlFor="firstName" style={{
+                        display: 'block',
+                        marginBottom: '5px',
+                        fontWeight: 400,
+                        fontSize: '12px',
+                        color: '#666',
+                      }}>
+                        Ім'я
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        placeholder=""
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                        style={{
+                          width: '100%',
+                          padding: '8px 12px',
+                          fontSize: '16px',
+                          borderRadius: '0',
+                          border: error ? '1px solid red' : '1px solid #ccc',
+                          marginBottom: '0',
+                          textAlign: 'left',
+                          color: '#000',
+                          boxSizing: 'border-box',
+                          fontWeight: '400',
+                          height: '40px',
+                          outline: 'none',
+                          transition: 'border-color 0.2s ease-in-out',
+                        }}
+                        onFocus={e => (e.currentTarget.style.borderColor = '#007BFF')}
+                        onBlur={e => (e.currentTarget.style.borderColor = error ? 'red' : '#ccc')}
+                      />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <label htmlFor="lastName" style={{
+                        display: 'block',
+                        marginBottom: '5px',
+                        fontWeight: 400,
+                        fontSize: '12px',
+                        color: '#666',
+                      }}>
+                        Прізвище
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        placeholder=""
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                        style={{
+                          width: '100%',
+                          padding: '8px 12px',
+                          fontSize: '16px',
+                          borderRadius: '0',
+                          border: error ? '1px solid red' : '1px solid #ccc',
+                          marginBottom: '0',
+                          textAlign: 'left',
+                          color: '#000',
+                          boxSizing: 'border-box',
+                          fontWeight: '400',
+                          height: '40px',
+                          outline: 'none',
+                          transition: 'border-color 0.2s ease-in-out',
+                        }}
+                        onFocus={e => (e.currentTarget.style.borderColor = '#007BFF')}
+                        onBlur={e => (e.currentTarget.style.borderColor = error ? 'red' : '#ccc')}
+                      />
+                    </div>
+                  </div>
+
+                  <label htmlFor="password" style={{
+                    display: 'block',
+                    marginBottom: '5px',
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    color: '#666',
+                  }}>
+                    Пароль
+                  </label>
+                  <div style={{ position: 'relative', width: '100%' }}>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      id="password"
+                      placeholder=""
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      style={{
+                        width: '100%',
+                        padding: '8px 12px',
+                        fontSize: '16px',
+                        borderRadius: '0',
+                        border: !isPasswordValid(password) || error ? '1px solid red' : '1px solid #ccc',
+                        marginBottom: '14px',
+                        textAlign: 'left',
+                        color: '#000',
+                        boxSizing: 'border-box',
+                        fontWeight: '400',
+                        height: '40px',
+                        outline: 'none',
+                        transition: 'border-color 0.2s ease-in-out',
+                      }}
+                      onFocus={e => (e.currentTarget.style.borderColor = '#007BFF')}
+                      onBlur={e => (e.currentTarget.style.borderColor = !isPasswordValid(password) || error ? 'red' : '#ccc')}
+                    />
+                    <span
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{
+                        position: 'absolute',
+                        right: '10px',
+                        top: '40%',
+                        transform: 'translateY(-50%)',
+                        cursor: 'pointer',
+                        color: '#666',
+                      }}
+                    >
+                      <img
+                        src={showPassword ? './public/logo_icons/view.svg' : './public/logo_icons/hide.svg'}
+                        alt={showPassword ? 'Hide password' : 'Show password'}
+                        style={{ width: '20px', height: '20px' }}
+                      />
+                    </span>
+                  </div>
+                  <div style={{ marginBottom: '14px', fontSize: '10px', color: '#9b0032' }}>
+                    Створіть пароль, що відповідає всім наведеним нижче вимогам
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {getPasswordRequirement(password.length >= 8)} <span>Щонайменше 8 символів</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {getPasswordRequirement(/[a-zA-Z]/.test(password))} <span>Присутня щонайменше 1 літера</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {getPasswordRequirement(/\d/.test(password))} <span>Присутня щонайменше 1 цифра</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      {getPasswordRequirement(/[!@#$%^&*(),.?":{}|<>]/.test(password))} <span>Присутній щонайменше 1 спеціальний символ</span>
+                    </div>
+                  </div>
+
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '12px',
+                    marginBottom: '24px',
+                  }}>
+                    <label
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        cursor: 'pointer',
+                        fontSize: '14px',
+                        userSelect: 'none',
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={marketingConsent}
+                        onChange={(e) => setMarketingConsent(e.target.checked)}
+                        style={{ display: 'none' }}
+                        id="marketingConsent"
+                      />
+                      <span
+                        style={{
+                          width: '18px',
+                          height: '18px',
+                          border: '2px solid #000',
+                          display: 'inline-block',
+                          position: 'relative',
+                          backgroundColor: marketingConsent ? '#000' : 'transparent',
+                          transition: 'background-color 0.2s ease',
+                          borderRadius: '0',
+                          boxSizing: 'border-box',
+                        }}
+                      >
+                        {marketingConsent && (
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            style={{
+                              position: 'absolute',
+                              top: '2px',
+                              left: '4px',
+                              width: '12px',
+                              height: '12px',
+                            }}
+                          >
+                            <polyline points="4 12 10 18 20 6" />
+                          </svg>
+                        )}
+                      </span>
+                      <span onClick={() => setMarketingConsent(!marketingConsent)}>Я бажаю отримувати маркетингові матеріали від<br/> SkySync електронною поштою</span>
+                    </label>
+                    <p style={{ fontSize: '12px', color: '#666', margin: '0' }}>
+                      Вибираючи «Погодитись і зареєструватися», я погоджуюся з Умовами SkySync та умовами Договору про надання послуг. Дізнайтеся, як ми використовуємо та захищаємо ваші дані, ознайомившись із нашою Політикою конфіденційності.
+                    </p>
+                  </div>
+
+                  {error && <div style={{ color: 'red', marginBottom: '10px', fontSize: '14px' }}>{error}</div>}
+                  <button
+                    type="submit"
+                    disabled={isLoading || !isPasswordValid(password)}
+                    style={{
+                      ...buttonStyle,
+                      backgroundColor: (isLoading || !isPasswordValid(password)) ? '#ccc' : '#007BFF',
+                      color: '#fff',
+                      marginBottom: '60px',
+                      fontSize: '16px'
+                    }}
+                  >
+                    {isLoading ? 'Реєстрація...' : 'Погодитись і зареєструватися'}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </main>
+
+        <footer style={{
+          minHeight: '500px',
+          position: 'relative',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
+          width: '100vw',
+          backgroundColor: 'black',
+          color: 'white',
+          padding: '120px 40px 20px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(6, minmax(150px, 1fr))',
+          gap: '50px',
+          fontSize: '16px',
+          lineHeight: '3',
+          boxSizing: 'border-box',
+          marginTop: '70px',
+        }}>
+          <div>
+            <h4 style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', marginBottom: '24px' }}>SkySync</h4>
+            <div>Desktop app</div>
+            <div>Mobile app</div>
+            <div>Integrations</div>
+            <div>Features</div>
+            <div>Solutions</div>
+            <div>Security</div>
+            <div>Early access</div>
+            <div>Templates</div>
+            <div>Free tools</div>
+          </div>
+          <div>
+            <h4 style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', marginBottom: '24px' }}>Products</h4>
+            <div>Plus</div>
+            <div>Professional</div>
+            <div>Business</div>
+            <div>Enterprise</div>
+            <div>Dash</div>
+            <div>Reclaim.ai</div>
+            <div>SkySync Sign</div>
+            <div>DocSend</div>
+            <div>Plans</div>
+            <div>Product updates</div>
+          </div>
+          <div>
+            <h4 style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', marginBottom: '24px' }}>Features</h4>
+            <div>Send large files</div>
+            <div>Send long videos</div>
+            <div>Cloud photo storage</div>
+            <div>Secure file transfer</div>
+            <div>Password manager</div>
+            <div>Cloud backup</div>
+            <div>Edit PDFs</div>
+            <div>Electronic signatures</div>
+            <div>Convert to PDF</div>
+          </div>
+          <div>
+            <h4 style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', marginBottom: '24px' }}>Support</h4>
+            <div>Help centre</div>
+            <div>Contact us</div>
+            <div>Cancel contract</div>
+            <div>Privacy & terms</div>
+            <div>Cookie policy</div>
+            <div>Cookies & CCPA preferences</div>
+            <div>AI principles</div>
+            <div>Sitemap</div>
+            <div>Learning resources</div>
+          </div>
+          <div>
+            <h4 style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', marginBottom: '24px' }}>Resources</h4>
+            <div>Blog</div>
+            <div>Customer stories</div>
+            <div>Resources library</div>
+            <div>Developers</div>
+            <div>Community forums</div>
+            <div>Referrals</div>
+            <div>Reseller partners</div>
+            <div>Integration partners</div>
+            <div>Find a partner</div>
+          </div>
+          <div>
+            <h4 style={{ color: 'white', fontWeight: 'bold', fontSize: '18px', marginBottom: '24px' }}>Company</h4>
+            <div>About us</div>
+            <div>Impressum</div>
+            <div>Modern Slavery Statement</div>
+            <div>Jobs</div>
+            <div>Investor relations</div>
+            <div>Our impact</div>
+          </div>
+          <div style={{
+            gridColumn: '',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            marginBottom: '20px'
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              gap: '30px',
+            }}>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="./public/logo_icons/twitter.svg"
+                  alt="Twitter"
+                  style={{ height: '24px', width: '24px' }}
+                />
+              </a>
+              <a href="https://web.telegram.org/a/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="./public/logo_icons/telegram.svg"
+                  alt="Instagram"
+                  style={{ height: '24px', width: '24px' }}
+                />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="./public/logo_icons/youtube.svg"
+                  alt="YouTube"
+                  style={{ height: '24px', width: '24px' }}
+                />
+              </a>
+            </div>
+            <div style={{
+              width: '55%',
+              height: '1px',
+              backgroundColor: '#333',
+            }}></div>
+          </div>
+          <div style={{
+            gridColumn: '1 / -1',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            gap: '10px'
+          }}>
+            <img
+              src="./public/logo_icons/internet1.svg"
+              alt="Internet Icon"
+              style={{
+                height: '16px',
+                width: '16px',
+              }}
+            />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div>English (United States)</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <span style={{ transform: 'rotate(90deg)', display: 'inline-block' }}>^</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

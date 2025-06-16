@@ -1,0 +1,193 @@
+{
+  "language_selector": {
+    "choose_language": "Choose a language:"
+  },
+  "login": {
+    "header": {
+      "brand": "SkySync"
+    },
+    "email_step": {
+      "title_line1": "Sign in or",
+      "title_line2": "Register",
+      "continue_with_apple": "Continue with Apple",
+      "or": "or",
+      "email_label": "Email address",
+      "continue_button": "Continue",
+      "checking": "Checking..."
+    },
+    "password_step": {
+      "back": "Back",
+      "welcome_back": "Welcome back",
+      "sign_in_with": "Sign in with {{email}}",
+      "password_label": "Password",
+      "forgot_password": "Forgot password?",
+      "remember_me": "Remember me",
+      "login_button": "Sign in",
+      "logging_in": "Logging in..."
+    },
+    "register_step": {
+      "back": "Back",
+      "register_free": "Register for free",
+      "email_label": "Email address",
+      "first_name_label": "First name",
+      "last_name_label": "Last name",
+      "password_label": "Password",
+      "password_instruction": "Create a password that meets all the requirements below",
+      "password_min_length": "At least 8 characters",
+      "password_has_letter": "Contains at least 1 letter",
+      "password_has_number": "Contains at least 1 number",
+      "password_has_special": "Contains at least 1 special character",
+      "marketing_consent": "I wish to receive marketing materials from SkySync by email",
+      "terms_agreement": "By selecting “Agree and register”, I agree to SkySync’s Terms and the Service Agreement terms. Learn how we use and protect your data by reviewing our Privacy Policy.",
+      "register_button": "Agree and register",
+      "registering": "Registering..."
+    },
+    "errors": {
+      "empty_email": "Please enter an email",
+      "invalid_email": "Please enter a valid email, e.g., example@gmail.com",
+      "email_check_error": "Error checking email. Check your network connection or try again.",
+      "empty_password": "Please enter a password",
+      "wrong_password": "Incorrect password. Try again.",
+      "server_error": "Server error. Try again.",
+      "empty_names": "Please enter First name and Last name",
+      "invalid_password": "Password must meet all requirements below.",
+      "email_registered": "This email is already registered. Try another or sign in.",
+      "register_error": "Error during registration. Try again.",
+      "google_login_error": "Error signing in with Google. Try again."
+    },
+    "footer": {
+      "dropbox": {
+        "title": "SkySync",
+        "desktop_app": "Desktop app",
+        "mobile_app": "Mobile app",
+        "integrations": "Integrations",
+        "features": "Features",
+        "solutions": "Solutions",
+        "security": "Security",
+        "early_access": "Early access",
+        "templates": "Templates",
+        "free_tools": "Free tools"
+      },
+      "products": {
+        "title": "Products",
+        "plus": "Plus",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise",
+        "dash": "Dash",
+        "reclaim": "Reclaim.ai",
+        "sign": "SkySync Sign",
+        "docsend": "DocSend",
+        "plans": "Plans",
+        "updates": "Product updates"
+      },
+      "features": {
+        "title": "Features",
+        "send_large_files": "Send large files",
+        "send_large_videos": "Send large videos",
+        "photo_storage": "Cloud storage for photos",
+        "secure_sharing": "Secure file sharing",
+        "password_manager": "Password manager",
+        "cloud_backup": "Cloud backup",
+        "pdf_editing": "PDF editing",
+        "e_signatures": "E-signatures",
+        "pdf_conversion": "Convert to PDF"
+      },
+      "support": {
+        "title": "Support",
+        "help_center": "Help center",
+        "contact_us": "Contact us",
+        "cancel_contract": "Cancel contract",
+        "privacy_terms": "Privacy and terms",
+        "cookie_policy": "Cookie policy",
+        "cookie_ccpa": "Cookie and CCPA settings",
+        "ai_principles": "AI principles",
+        "sitemap": "Sitemap",
+        "learning_resources": "Learning resources"
+      },
+      "resources": {
+        "title": "Resources",
+        "blog": "Blog",
+        "customer_stories": "Customer stories",
+        "resource_library": "Resource library",
+        "developers": "Developers",
+        "community_forums": "Community forums",
+        "referrals": "Referrals",
+        "reseller_partners": "Reseller partners",
+        "integration_partners": "Integration partners",
+        "find_partner": "Find a partner"
+      },
+      "company": {
+        "title": "Company",
+        "about_us": "About us",
+        "legal_info": "Legal information",
+        "careers": "Careers",
+        "investor_relations": "Investor relations",
+        "our_impact": "Our impact"
+      },
+      "language": "English"
+    }
+  },
+  "dashboard": {
+    "main_menu": {
+      "home": "Home",
+      "folders": "Folders"
+    },
+    "secondary_menu": {
+      "all_files": "All Files",
+      "photos": "Photos",
+      "shared": "Shared",
+      "file_requests": "File Requests",
+      "deleted_files": "Deleted Files",
+      "quick_access": "Quick Access",
+      "starred": "Starred"
+    },
+    "search": {
+      "placeholder": "Search"
+    },
+    "invite_members": "Invite Members",
+    "avatar_options": {
+      "settings": "Settings",
+      "account_management": "Account Management",
+      "automation": "Automation",
+      "for_computer": "For Computer",
+      "theme": "Theme",
+      "logout": "Sign Out",
+      "add_team_account": "Add Team Account"
+    },
+    "quick_actions": {
+      "share": "Share or...",
+      "create": "Create",
+      "create_folder": "Create Folder",
+      "transfer_copy": "Transfer a Copy",
+      "share_file": "Share"
+    },
+    "files_section": {
+      "all_files": "All Files",
+      "recent": "Recent",
+      "starred": "Starred"
+    },
+    "drop_zone": {
+      "text": "Drag anything or",
+      "create_folder": "create a folder"
+    },
+    "uploaded_files": "Uploaded Files",
+    "modals": {
+      "create_folder": {
+        "title": "Create New Folder",
+        "placeholder": "Folder name"
+      },
+      "upload": {
+        "title": "Upload",
+        "folder": "Folder"
+      },
+      "cancel": "Cancel",
+      "create": "Create"
+    },
+    "errors": {
+      "no_token": "Please sign in again",
+      "session_expired": "Session expired. Please sign in again",
+      "fetch_files": "Error fetching files"
+    }
+  }
+}

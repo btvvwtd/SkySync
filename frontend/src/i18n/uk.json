@@ -1,0 +1,194 @@
+{
+  "language_selector": {
+    "choose_language": "Виберіть мову:"
+  },
+  "login": {
+    "header": {
+      "brand": "SkySync"
+    },
+    "email_step": {
+      "title_line1": "Увійти або",
+      "title_line2": "Зареєструватись",
+      "continue_with_apple": "Продовжити через Apple",
+      "or": "або",
+      "email_label": "Адреса електронної пошти",
+      "continue_button": "Продовжити",
+      "checking": "Перевірка..."
+    },
+    "password_step": {
+      "back": "Назад",
+      "welcome_back": "З поверненням",
+      "sign_in_with": "Увійти через {{email}}",
+      "password_label": "Пароль",
+      "forgot_password": "Забули пароль?",
+      "remember_me": "Запам'ятати мене",
+      "login_button": "Увійти",
+      "logging_in": "Вхід..."
+    },
+    "register_step": {
+      "back": "Назад",
+      "register_free": "Зареєструватися безкоштовно",
+      "email_label": "Адреса електронної пошти",
+      "first_name_label": "Ім'я",
+      "last_name_label": "Прізвище",
+      "password_label": "Пароль",
+      "password_instruction": "Створіть пароль, що відповідає всім наведеним нижче вимогам",
+      "password_min_length": "Щонайменше 8 символів",
+      "password_has_letter": "Присутня щонайменше 1 літера",
+      "password_has_number": "Присутня щонайменше 1 цифра",
+      "password_has_special": "Присутній щонайменше 1 спеціальний символ",
+      "marketing_consent": "Я бажаю отримувати маркетингові матеріали від SkySync електронною поштою",
+      "terms_agreement": "Вибираючи «Погодитись і зареєструватися», я погоджуюся з Умовами SkySync та умовами Договору про надання послуг. Дізнайтеся, як ми використовуємо та захищаємо ваші дані, ознайомившись із нашою Політикою конфіденційності.",
+      "register_button": "Погодитись і зареєструватися",
+      "registering": "Реєстрація..."
+    },
+    "errors": {
+      "empty_email": "Будь ласка, введіть email",
+      "invalid_email": "Будь ласка, введіть дійсний email, наприклад, example@gmail.com",
+      "email_check_error": "Помилка перевірки email. Перевірте підключення до мережі або спробуйте ще раз.",
+      "empty_password": "Будь ласка, введіть пароль",
+      "wrong_password": "Неправильний пароль. Спробуйте ще раз.",
+      "server_error": "Помилка сервера. Спробуйте ще раз.",
+      "empty_names": "Будь ласка, введіть Ім'я та прізвище",
+      "invalid_password": "Пароль має відповідати всім вимогам нижче.",
+      "email_registered": "Цей email уже зареєстровано. Спробуйте інший або увійдіть.",
+      "register_error": "Помилка при реєстрації. Спробуйте ще раз.",
+      "google_login_error": "Помилка при вході через Google. Спробуйте ще раз."
+    },
+    "footer": {
+      "dropbox": {
+        "title": "SkySync",
+        "desktop_app": "Програма для комп'ютерів",
+        "mobile_app": "Програма для мобільних пристроїв",
+        "integrations": "Інтеграції",
+        "features": "Функції",
+        "solutions": "Рішення",
+        "security": "Безпека",
+        "early_access": "Ранній доступ",
+        "templates": "Шаблони",
+        "free_tools": "Безкоштовні інструменти"
+      },
+      "products": {
+        "title": "Продукти",
+        "plus": "Plus",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise",
+        "dash": "Dash",
+        "reclaim": "Reclaim.ai",
+        "sign": "SkySync Sign",
+        "docsend": "DocSend",
+        "plans": "Плани",
+        "updates": "Оновлення продуктів"
+      },
+      "features": {
+        "title": "Функції",
+        "send_large_files": "Надсилання великих файлів",
+        "send_large_videos": "Надсилання великих відеозаписів",
+        "photo_storage": "Хмарне сховище для фотографій",
+        "secure_sharing": "Безпечний обмін файлами",
+        "password_manager": "Диспетчер паролів",
+        "cloud_backup": "Хмарне резервне копіювання",
+        "pdf_editing": "Редагування PDF-файлів",
+        "e_signatures": "Електронні підписи",
+        "pdf_conversion": "Конвертування в PDF"
+      },
+      "support": {
+        "title": "Служба підтримки",
+        "help_center": "Центр довідки",
+        "contact_us": "Звернутися до нас",
+        "cancel_contract": "Скасувати договір",
+        "privacy_terms": "Конфіденційність і умови",
+        "cookie_policy": "Політика щодо файлів cookie",
+        "cookie_ccpa": "Параметри файлів cookie та CCPA",
+        "ai_principles": "Принципи штучного інтелекту",
+        "sitemap": "Карта сайту",
+        "learning_resources": "Ресурси для навчання"
+      },
+      "resources": {
+        "title": "Ресурси",
+        "blog": "Блог",
+        "customer_stories": "Історії клієнтів",
+        "resource_library": "Бібліотека ресурсів",
+        "developers": "Розробникам",
+        "community_forums": "Форуми спільноти",
+        "referrals": "Запрошення",
+        "reseller_partners": "Партнери-посередники",
+        "integration_partners": "Партнери з інтеграції",
+        "find_partner": "Знайти партнера"
+      },
+      "company": {
+        "title": "Компанія",
+        "about_us": "Про нас",
+        "legal_info": "Офіційні реквізити",
+        "careers": "Вакансії",
+        "investor_relations": "Відносини з інвесторами",
+        "our_impact": "Наш вплив"
+      },
+      "language": "Українська"
+    }
+  },
+  "dashboard": {
+    "main_menu": {
+      "home": "Головна",
+      "folders": "Папки"
+    },
+    "secondary_menu": {
+      "all_files": "Усі файли",
+      "photos": "Фотографії",
+      "shared": "Спільний доступ",
+      "file_requests": "Запити файлів",
+      "deleted_files": "Видалені файли",
+      "quick_access": "Швидкий доступ",
+      "starred": "Позначені"
+    },
+    "search": {
+      "placeholder": "Пошук"
+    },
+    "invite_members": "Запросити учасників",
+    "avatar_options": {
+      "settings": "Параметри",
+      "account_management": "Керування обліковкою",
+      "automation": "Автоматизація",
+      "for_computer": "Для комп’ютерів",
+      "theme": "Тема",
+      "logout": "Вийти з обліковки",
+      "add_team_account": "Додати обліковку команди",
+      "language": "Мова"
+    },
+    "quick_actions": {
+      "share": "Поділитися або...",
+      "create": "Створити",
+      "create_folder": "Створити папку",
+      "transfer_copy": "Передати копію",
+      "share_file": "Поділитися файлом"
+    },
+    "files_section": {
+      "all_files": "Усі файли",
+      "recent": "Останні",
+      "starred": "Позначені"
+    },
+    "drop_zone": {
+      "text": "Перетягніть файли або",
+      "create_folder": "створити папку"
+    },
+    "uploaded_files": "Завантажені файли",
+    "modals": {
+      "create_folder": {
+        "title": "Створити нову папку",
+        "placeholder": "Назва папки"
+      },
+      "upload": {
+        "title": "Завантажити",
+        "folder": "Папка"
+      },
+      "cancel": "Скасувати",
+      "create": "Створити"
+    },
+    "errors": {
+      "no_token": "Будь ласка, увійдіть знову",
+      "session_expired": "Сесія закінчилася. Будь ласка, увійдіть знову",
+      "fetch_files": "Помилка при отриманні файлів"
+    }
+  }
+}

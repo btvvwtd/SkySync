@@ -1,0 +1,131 @@
+{
+  "language_selector": {
+    "choose_language": "Choisissez une langue :"
+  },
+  "login": {
+    "header": {
+      "brand": "SkySync"
+    },
+    "email_step": {
+      "title_line1": "Se connecter ou",
+      "title_line2": "S'inscrire",
+      "continue_with_apple": "Continuer avec Apple",
+      "or": "ou",
+      "email_label": "Adresse e-mail",
+      "continue_button": "Continuer",
+      "checking": "Vérification..."
+    },
+    "password_step": {
+      "back": "Retour",
+      "welcome_back": "Bon retour",
+      "sign_in_with": "Se connecter avec {{email}}",
+      "password_label": "Mot de passe",
+      "forgot_password": "Mot de passe oublié ?",
+      "remember_me": "Se souvenir de moi",
+      "login_button": "Se connecter",
+      "logging_in": "Connexion..."
+    },
+    "register_step": {
+      "back": "Retour",
+      "register_free": "Inscription gratuite",
+      "email_label": "Adresse e-mail",
+      "first_name_label": "Prénom",
+      "last_name_label": "Nom",
+      "password_label": "Mot de passe",
+      "password_instruction": "Créez un mot de passe qui répond à toutes les exigences ci-dessous",
+      "password_min_length": "Au moins 8 caractères",
+      "password_has_letter": "Contient au moins 1 lettre",
+      "password_has_number": "Contient au moins 1 chiffre",
+      "password_has_special": "Contient au moins 1 caractère spécial",
+      "marketing_consent": "Je souhaite recevoir des documents marketing de SkySync par e-mail",
+      "terms_agreement": "En sélectionnant « Accepter et s'inscrire », j'accepte les conditions de SkySync et les termes de l'accord de service. Découvrez comment nous utilisons et protégeons vos données en consultant notre politique de confidentialité.",
+      "register_button": "Accepter et s'inscrire",
+      "registering": "Inscription..."
+    },
+    "errors": {
+      "empty_email": "Veuillez entrer un e-mail",
+      "invalid_email": "Veuillez entrer un e-mail valide, par ex. example@gmail.com",
+      "email_check_error": "Erreur lors de la vérification de l'e-mail. Vérifiez votre connexion réseau ou réessayez.",
+      "empty_password": "Veuillez entrer un mot de passe",
+      "wrong_password": "Mot de passe incorrect. Réessayez.",
+      "server_error": "Erreur serveur. Réessayez.",
+      "empty_names": "Veuillez entrer un prénom et un nom",
+      "invalid_password": "Le mot de passe doit répondre à toutes les exigences ci-dessous.",
+      "email_registered": "Cet e-mail est déjà enregistré. Essayez un autre ou connectez-vous.",
+      "register_error": "Erreur lors de l'inscription. Réessayez.",
+      "google_login_error": "Erreur lors de la connexion avec Google. Réessayez."
+    },
+    "footer": {
+      "dropbox": {
+        "title": "SkySync",
+        "desktop_app": "Application de bureau",
+        "mobile_app": "Application mobile",
+        "integrations": "Intégrations",
+        "features": "Fonctionnalités",
+        "solutions": "Solutions",
+        "security": "Sécurité",
+        "early_access": "Accès anticipé",
+        "templates": "Modèles",
+        "free_tools": "Outils gratuits"
+      },
+      "products": {
+        "title": "Produits",
+        "plus": "Plus",
+        "professional": "Professionnel",
+        "business": "Entreprise",
+        "enterprise": "Entreprise",
+        "dash": "Dash",
+        "reclaim": "Reclaim.ai",
+        "sign": "SkySync Sign",
+        "docsend": "DocSend",
+        "plans": "Plans",
+        "updates": "Mises à jour des produits"
+      },
+      "features": {
+        "title": "Fonctionnalités",
+        "send_large_files": "Envoyer des fichiers volumineux",
+        "send_large_videos": "Envoyer des vidéos volumineuses",
+        "photo_storage": "Stockage cloud pour photos",
+        "secure_sharing": "Partage sécurisé de fichiers",
+        "password_manager": "Gestionnaire de mots de passe",
+        "cloud_backup": "Sauvegarde cloud",
+        "pdf_editing": "Édition de PDF",
+        "e_signatures": "Signatures électroniques",
+        "pdf_conversion": "Convertir en PDF"
+      },
+      "support": {
+        "title": "Support",
+        "help_center": "Centre d'aide",
+        "contact_us": "Contactez-nous",
+        "cancel_contract": "Résilier le contrat",
+        "privacy_terms": "Confidentialité et conditions",
+        "cookie_policy": "Politique de cookies",
+        "cookie_ccpa": "Paramètres de cookies et CCPA",
+        "ai_principles": "Principes d'IA",
+        "sitemap": "Plan du site",
+        "learning_resources": "Ressources d'apprentissage"
+      },
+      "resources": {
+        "title": "Ressources",
+        "blog": "Blog",
+        "customer_stories": "Histoires de clients",
+        "resource_library": "Bibliothèque de ressources",
+        "developers": "Développeurs",
+        "community_forums": "Forums communautaires",
+        "referrals": "Parrainages",
+        "reseller_partners": "Partenaires revendeurs",
+        "integration_partners": "Partenaires d'intégration",
+        "find_partner": "Trouver un partenaire"
+      },
+      "company": {
+        "title": "Entreprise",
+        "about_us": "À propos de nous",
+        "legal_info": "Informations légales",
+        "careers": "Carrières",
+        "investor_relations": "Relations avec les investisseurs",
+        "our_impact": "Notre impact"
+      },
+      "language": "Français"
+    }
+  }
+}

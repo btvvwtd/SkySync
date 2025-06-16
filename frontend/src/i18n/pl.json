@@ -1,0 +1,193 @@
+{
+  "language_selector": {
+    "choose_language": "Wybierz język:"
+  },
+  "login": {
+    "header": {
+      "brand": "SkySync"
+    },
+    "email_step": {
+      "title_line1": "Zaloguj się lub",
+      "title_line2": "Zarejestruj się",
+      "continue_with_apple": "Kontynuuj z Apple",
+      "or": "lub",
+      "email_label": "Adres e-mail",
+      "continue_button": "Kontynuuj",
+      "checking": "Sprawdzanie..."
+    },
+    "password_step": {
+      "back": "Wstecz",
+      "welcome_back": "Witaj ponownie",
+      "sign_in_with": "Zaloguj się za pomocą {{email}}",
+      "password_label": "Hasło",
+      "forgot_password": "Zapomniałeś hasła?",
+      "remember_me": "Zapamiętaj mnie",
+      "login_button": "Zaloguj się",
+      "logging_in": "Logowanie..."
+    },
+    "register_step": {
+      "back": "Wstecz",
+      "register_free": "Zarejestruj się za darmo",
+      "email_label": "Adres e-mail",
+      "first_name_label": "Imię",
+      "last_name_label": "Nazwisko",
+      "password_label": "Hasło",
+      "password_instruction": "Utwórz hasło spełniające wszystkie poniższe wymagania",
+      "password_min_length": "Co najmniej 8 znaków",
+      "password_has_letter": "Zawiera co najmniej 1 literę",
+      "password_has_number": "Zawiera co najmniej 1 cyfrę",
+      "password_has_special": "Zawiera co najmniej 1 znak specjalny",
+      "marketing_consent": "Chcę otrzymywać materiały marketingowe od SkySync drogą mailową",
+      "terms_agreement": "Wybierając „Zgadzam się i rejestruję”, akceptuję Warunki korzystania z usług SkySync i Umowę o świadczenie usług. Dowiedz się, jak wykorzystujemy i chronimy Twoje dane, zapoznając się z naszą Polityką prywatności.",
+      "register_button": "Zgadzam się i rejestruję",
+      "registering": "Rejestrowanie..."
+    },
+    "errors": {
+      "empty_email": "Wprowadź adres e-mail",
+      "invalid_email": "Wprowadź poprawny adres e-mail, np. example@gmail.com",
+      "email_check_error": "Błąd podczas sprawdzania adresu e-mail. Sprawdź połączenie sieciowe lub spróbuj ponownie.",
+      "empty_password": "Wprowadź hasło",
+      "wrong_password": "Nieprawidłowe hasło. Spróbuj ponownie.",
+      "server_error": "Błąd serwera. Spróbuj ponownie.",
+      "empty_names": "Wprowadź imię i nazwisko",
+      "invalid_password": "Hasło musi spełniać wszystkie poniższe wymagania.",
+      "email_registered": "Ten adres e-mail jest już zarejestrowany. Użyj innego lub zaloguj się.",
+      "register_error": "Błąd podczas rejestracji. Spróbuj ponownie.",
+      "google_login_error": "Błąd logowania przez Google. Spróbuj ponownie."
+    },
+    "footer": {
+      "dropbox": {
+        "title": "SkySync",
+        "desktop_app": "Aplikacja na komputer",
+        "mobile_app": "Aplikacja mobilna",
+        "integrations": "Integracje",
+        "features": "Funkcje",
+        "solutions": "Rozwiązania",
+        "security": "Bezpieczeństwo",
+        "early_access": "Wczesny dostęp",
+        "templates": "Szablony",
+        "free_tools": "Darmowe narzędzia"
+      },
+      "products": {
+        "title": "Produkty",
+        "plus": "Plus",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise",
+        "dash": "Dash",
+        "reclaim": "Reclaim.ai",
+        "sign": "SkySync Sign",
+        "docsend": "DocSend",
+        "plans": "Plany",
+        "updates": "Aktualizacje produktów"
+      },
+      "features": {
+        "title": "Funkcje",
+        "send_large_files": "Wysyłaj duże pliki",
+        "send_large_videos": "Wysyłaj duże filmy",
+        "photo_storage": "Przechowywanie zdjęć w chmurze",
+        "secure_sharing": "Bezpieczne udostępnianie plików",
+        "password_manager": "Menedżer haseł",
+        "cloud_backup": "Kopia zapasowa w chmurze",
+        "pdf_editing": "Edycja PDF",
+        "e_signatures": "Podpisy elektroniczne",
+        "pdf_conversion": "Konwertowanie do PDF"
+      },
+      "support": {
+        "title": "Wsparcie",
+        "help_center": "Centrum pomocy",
+        "contact_us": "Skontaktuj się z nami",
+        "cancel_contract": "Anuluj umowę",
+        "privacy_terms": "Prywatność i warunki",
+        "cookie_policy": "Polityka cookies",
+        "cookie_ccpa": "Ustawienia cookies i CCPA",
+        "ai_principles": "Zasady AI",
+        "sitemap": "Mapa strony",
+        "learning_resources": "Materiały edukacyjne"
+      },
+      "resources": {
+        "title": "Zasoby",
+        "blog": "Blog",
+        "customer_stories": "Historie klientów",
+        "resource_library": "Biblioteka zasobów",
+        "developers": "Deweloperzy",
+        "community_forums": "Fora społeczności",
+        "referrals": "Polecenia",
+        "reseller_partners": "Partnerzy sprzedaży",
+        "integration_partners": "Partnerzy integracyjni",
+        "find_partner": "Znajdź partnera"
+      },
+      "company": {
+        "title": "Firma",
+        "about_us": "O nas",
+        "legal_info": "Informacje prawne",
+        "careers": "Kariera",
+        "investor_relations": "Relacje inwestorskie",
+        "our_impact": "Nasz wpływ"
+      },
+      "language": "Polski"
+    }
+  },
+  "dashboard": {
+    "main_menu": {
+      "home": "Strona główna",
+      "folders": "Foldery"
+    },
+    "secondary_menu": {
+      "all_files": "Wszystkie pliki",
+      "photos": "Zdjęcia",
+      "shared": "Udostępnione",
+      "file_requests": "Prośby o pliki",
+      "deleted_files": "Usunięte pliki",
+      "quick_access": "Szybki dostęp",
+      "starred": "Oznaczone gwiazdką"
+    },
+    "search": {
+      "placeholder": "Szukaj"
+    },
+    "invite_members": "Zaproś członków",
+    "avatar_options": {
+      "settings": "Ustawienia",
+      "account_management": "Zarządzanie kontem",
+      "automation": "Automatyzacja",
+      "for_computer": "Na komputer",
+      "theme": "Motyw",
+      "logout": "Wyloguj się",
+      "add_team_account": "Dodaj konto zespołu"
+    },
+    "quick_actions": {
+      "share": "Udostępnij lub...",
+      "create": "Utwórz",
+      "create_folder": "Utwórz folder",
+      "transfer_copy": "Przenieś kopię",
+      "share_file": "Udostępnij"
+    },
+    "files_section": {
+      "all_files": "Wszystkie pliki",
+      "recent": "Ostatnie",
+      "starred": "Oznaczone"
+    },
+    "drop_zone": {
+      "text": "Przeciągnij coś lub",
+      "create_folder": "utwórz folder"
+    },
+    "uploaded_files": "Przesłane pliki",
+    "modals": {
+      "create_folder": {
+        "title": "Utwórz nowy folder",
+        "placeholder": "Nazwa folderu"
+      },
+      "upload": {
+        "title": "Prześlij",
+        "folder": "Folder"
+      },
+      "cancel": "Anuluj",
+      "create": "Utwórz"
+    },
+    "errors": {
+      "no_token": "Zaloguj się ponownie",
+      "session_expired": "Sesja wygasła. Zaloguj się ponownie",
+      "fetch_files": "Błąd podczas pobierania plików"
+    }
+  }
+}
