@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { createFile } from '../api/api';
+import { createFile } from '../../../api/api.ts';
 
 interface ServerFile {
   id: number;

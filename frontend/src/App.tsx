@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Login from './pages/Login/Login.tsx';
+import Dashboard from './pages/Dashboard/Dashboard.tsx';
 
 const App: React.FC = () => {
   const isAuthenticated = !!(localStorage.getItem('token') || sessionStorage.getItem('token'));

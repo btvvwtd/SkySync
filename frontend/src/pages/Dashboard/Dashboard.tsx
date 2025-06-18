@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
-import { getFiles } from '../api/api';
-import FileList from '../components/FileList';
-import FileUpload from '../components/FileUpload';
-import ReadFile from '../components/ReadFile';
-import LanguageSelector from './LanguageSelector';
+import './utils/Dashboard.css';
+import { getFiles } from '../../api/api.ts';
+import FileList from './components/FileList.tsx';
+import FileUpload from './components/FileUpload.tsx';
+import ReadFile from './components/ReadFile.tsx';
+import LanguageSelector from '../Login/components/LanguageSelector.tsx';
 import { useTranslation } from 'react-i18next';
 
 interface ServerFile {

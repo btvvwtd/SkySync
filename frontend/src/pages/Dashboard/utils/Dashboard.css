@@ -515,12 +515,8 @@
   display: block;
 }
 
-.avatar-options {
-  display: flex;
-  flex-direction: column;
-}
-
 .avatar-option {
+  flex-direction: column;
   display: flex;
   align-items: center;
   gap: 8px;

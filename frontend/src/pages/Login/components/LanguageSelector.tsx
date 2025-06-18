@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import i18n from '../i18n/i18n';
+import i18n from '../../../i18n/i18n.ts';
 import { useTranslation } from 'react-i18next';
 
 interface LanguageButtonProps {
@@ -33,9 +33,10 @@ const LanguageButton: React.FC<LanguageButtonProps> = ({ onClick }) => (
 interface LanguageModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onLanguageChange: (langCode: string) => void;
 }
 
-const LanguageModal: React.FC<LanguageModalProps> = ({ isOpen, onClose }) => {
+const LanguageModal: React.FC<LanguageModalProps> = ({ isOpen, onClose, onLanguageChange }) => {
   const { t } = useTranslation();
   const languages = [
     { name: 'Bahasa Indonesia', code: 'id' },
@@ -73,6 +74,13 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
+
+  const handleLanguageSelect = (langCode: string) => {
+    i18n.changeLanguage(langCode);
+    localStorage.setItem('language', langCode);
+    onLanguageChange(langCode); // Викликаємо зовнішній обробник
+    onClose();
+  };
 
   if (!isOpen) return null;
 
@@ -151,11 +159,7 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ isOpen, onClose }) => {
           {languages.map((lang, idx) => (
             <div
               key={idx}
-              onClick={() => {
-                i18n.changeLanguage(lang.code);
-                localStorage.setItem('language', lang.code); // Збереження обраної мови
-                onClose();
-              }}
+              onClick={() => handleLanguageSelect(lang.code)}
               style={{
                 cursor: 'pointer',
                 fontSize: '13px',
@@ -179,10 +183,31 @@ const LanguageModal: React.FC<LanguageModalProps> = ({ isOpen, onClose }) => {
 const LanguageSelector: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleLanguageChange = (langCode: string) => {
+    // Перерендер кнопки Google при зміні мови
+    const googleButtonContainer = document.getElementById('googleSignInDiv');
+    if (googleButtonContainer && window.google?.accounts?.id) {
+      googleButtonContainer.innerHTML = '';
+      window.google.accounts.id.renderButton(googleButtonContainer, {
+        theme: 'outline',
+        size: 'large',
+        type: 'standard',
+        text: 'signin_with',
+        shape: 'rectangular',
+        width: 320,
+        locale: langCode
+      });
+    }
+  };
+
   return (
     <>
       <LanguageButton onClick={() => setIsOpen(true)} />
-      <LanguageModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <LanguageModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onLanguageChange={handleLanguageChange}
+      />
     </>
   );
 };

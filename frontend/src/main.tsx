@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Login from './pages/Login/Login.tsx';
+import Dashboard from './pages/Dashboard/Dashboard.tsx';
 import i18n from './i18n/i18n';
 import './index.css';
 

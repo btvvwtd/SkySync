@@ -1,14 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/logo_icons/skysync.svg" />
-<!--    <link rel="icon" type="image/svg+xml" href="./public/logo_icons/internet.svg" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> — SkySync</title>
+    <title>SkySync - File Sharing</title>
+
+    <!-- Додайте базові стилі -->
+    <link rel="stylesheet" href="/src/index.css">
+
+    <!-- Правильний шлях до іконки -->
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Fallback для старих браузерів -->
+    <noscript>
+      <h1>Please enable JavaScript to use this application</h1>
+    </noscript>
   </body>
 </html>
